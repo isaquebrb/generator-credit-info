@@ -1,0 +1,53 @@
+//https://www.cpfcnpj.com.br/pacotes.html#cpf
+//https://www.soawebservices.com.br/restservices/test-drive/cdc/pessoafisicaestendida.ashx
+{
+  "Documento": "99999999999",
+  "Nome": "DOCUMENTO DE TESTES ",
+  "NomeMae": "NOME MAE DE TESTES",
+  "DataNascimento": "99/99/9999",
+  "Escolaridade": "ESCOLARIDADE",
+  "Sexo": "0",
+  "DataConsultaRFB": "0001-01-01T00:00:00",
+  "Enderecos": [
+    {
+      "Tipo": 0,
+      "Logradouro": "LOGRADOURO DE TESTES",
+      "Numero": "99999",
+      "Complemento": "COMPLEMENTO",
+      "Bairro": "BAIRRO",
+      "Cidade": "CIDADE DE TESTES",
+      "Estado": "XX",
+      "CEP": "99999-999",
+      "GeoLocalizacao": {
+        "Latitude": 0.0,
+        "Longitude": 0.0
+      },
+      "DataAtualizacao": "2021-01-25T21:44:06.6556622-03:00",
+      "CodigoIBGE": 999999
+    }
+  ],
+  "Telefones": [
+    {
+      "TipoTelefone": 0,
+      "Numero": "99-9999-9999",
+      "Ramal": "9999",
+      "DataAtualizacao": "2021-01-25T21:44:06.6556622-03:00"
+    }
+  ],
+  "Emails": [
+    {
+      "Email": "email@teste.com.br"
+    }
+  ],
+  "Participacoes": [],
+  "AtividadeProfissional": "ATIVIDADE PROFISSIONAL",
+  "RendaPresumida": "9999",
+  "Cargo": "CARGO",
+  "Mensagem": "Transacao realizada com sucesso!",
+  "Status": true,
+  "Transacao": {
+    "Status": true,
+    "CodigoStatus": "G000M001",
+    "CodigoStatusDescricao": "Transacao realizada com sucesso"
+  }
+}
