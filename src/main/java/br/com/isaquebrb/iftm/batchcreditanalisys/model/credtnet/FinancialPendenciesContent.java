@@ -3,9 +3,11 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
-@Getter
-public class CrednetPersonInfo extends CommonInfo {
+import java.util.List;
 
-    @JsonProperty("conteudo")
-    private CrednetPersonContent content;
+@Getter
+public class FinancialPendenciesContent {
+
+    @JsonProperty("detalhes")
+    private List<FinancialPendenciesDetail> details;
 }

@@ -1,5 +1,6 @@
-package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
+package br.com.isaquebrb.iftm.batchcreditanalisys.model.response;
 
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.CrednetInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
