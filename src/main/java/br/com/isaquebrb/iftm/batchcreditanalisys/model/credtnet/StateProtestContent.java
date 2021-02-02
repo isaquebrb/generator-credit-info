@@ -6,10 +6,10 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class FinancialPendenciesDetail {
+public class StateProtestContent {
 
     @JsonProperty("total_ocorrencia")
-    private Integer totalOccurrences;
+    private String totalOccurrence;
 
     @JsonProperty("data_ocorrencia_mais_antiga")
     private String lastOccurrenceDate;
@@ -20,9 +20,6 @@ public class FinancialPendenciesDetail {
     @JsonProperty("valor")
     private String value;
 
-    @JsonProperty("tipo_anotacao")
-    private String typeAnnotation;
-
-    @JsonProperty("pendencias")
-    private List<Pendencies> pendenciesList;
+    @JsonProperty("protestos")
+    private List<Protest> protestList;
 }

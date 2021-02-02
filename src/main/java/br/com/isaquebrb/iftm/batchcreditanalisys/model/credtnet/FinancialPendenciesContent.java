@@ -9,5 +9,5 @@ import java.util.List;
 public class FinancialPendenciesContent {
 
     @JsonProperty("detalhes")
-    private List<FinancialPendenciesDetail> details;
+    private List<FinancialPendenciesDetail> detailList;
 }

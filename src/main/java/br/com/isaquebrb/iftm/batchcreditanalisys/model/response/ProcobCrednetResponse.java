@@ -2,15 +2,19 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.model.response;
 
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.CrednetInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Getter
+@AllArgsConstructor
 public class ProcobCrednetResponse {
 
     @JsonProperty("content")
     private CrednetInfo crednetInfo;
-    private LocalDate date;
+
+    private String date;
+
     private String hour;
 }

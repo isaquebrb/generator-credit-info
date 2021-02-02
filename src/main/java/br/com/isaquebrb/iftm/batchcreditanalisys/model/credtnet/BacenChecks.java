@@ -1,5 +1,6 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
@@ -31,5 +32,6 @@ public class BacenChecks {
     private String city;
 
     @JsonProperty("uf")
-    private String uf;
+    @JsonAlias("state")
+    private String state;
 }

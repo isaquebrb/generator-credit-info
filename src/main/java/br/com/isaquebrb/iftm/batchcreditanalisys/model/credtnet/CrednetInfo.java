@@ -2,9 +2,11 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class CrednetInfo {
 
     @JsonProperty("confirmei")

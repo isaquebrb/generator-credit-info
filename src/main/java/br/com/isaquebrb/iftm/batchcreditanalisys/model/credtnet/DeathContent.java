@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
-public class DeathInfo extends CommonInfo {
+public class DeathContent {
 
-    @JsonProperty("conteudo")
-    private DeathContent content;
+    @JsonProperty("mensagem")
+    private String message;
 }
