@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class ProcobService {
@@ -21,16 +22,17 @@ public class ProcobService {
 
         return new ProcobCrednetResponse(crednetInfo,
                 LocalDate.now().toString(),
-                LocalTime.now().toString());
+                LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
     }
 
     private CrednetPersonInfo crednetPersonInfo() {
-        return new CrednetPersonInfo(
+        CrednetPersonInfo personInfo = new CrednetPersonInfo(
                 CrednetPersonContent.builder()
                         .name("FULANO DA SILVA")
                         .birthDate(DateUtils.randomDate().toString())
                         .docSituation(RandomProcobUtils.randomDocSituation())
-                        .docSituationDate(DateUtils.randomDate().toString())
-                        .build());
+                        .docSituationDate(DateUtils.randomDate().toString()).build());
+        personInfo.setHasInformation("SIM");
+        return personInfo;
     }
 }
