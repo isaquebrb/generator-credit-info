@@ -1,15 +1,21 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class StateProtestContent {
 
     @JsonProperty("total_ocorrencia")
-    private String totalOccurrence;
+    private Integer totalOccurrence;
 
     @JsonProperty("data_ocorrencia_mais_antiga")
     private String lastOccurrenceDate;

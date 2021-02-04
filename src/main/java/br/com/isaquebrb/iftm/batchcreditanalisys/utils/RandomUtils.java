@@ -2,11 +2,14 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.utils;
 
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.DocSituation;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomProcobUtils {
+public class RandomUtils {
 
     public static String randomDocSituation() {
         int randomNumber = ThreadLocalRandom.current().nextInt(1, 6);
@@ -20,5 +23,22 @@ public class RandomProcobUtils {
         docSituation.put(6, DocSituation.NULL.getLabel());
 
         return docSituation.get(randomNumber);
+    }
+
+    public static boolean randomBoolean(){
+        Random random = new Random();
+        return random.nextBoolean();
+    }
+
+    public static Double randomDouble(Double startRange, Double endRange) {
+        return ThreadLocalRandom.current().nextDouble(startRange, endRange);
+    }
+
+    public static BigDecimal randomBigDecimalValue(Double startRange, Double endRange ) {
+        return BigDecimal.valueOf(randomDouble(startRange, endRange)).setScale(2, RoundingMode.HALF_DOWN);
+    }
+
+    public static boolean isCompany(String document){
+        return document.length() > 11;
     }
 }

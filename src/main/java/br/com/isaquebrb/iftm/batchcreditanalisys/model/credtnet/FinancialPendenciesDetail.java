@@ -1,11 +1,13 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@Builder
 public class FinancialPendenciesDetail {
 
     @JsonProperty("total_ocorrencia")

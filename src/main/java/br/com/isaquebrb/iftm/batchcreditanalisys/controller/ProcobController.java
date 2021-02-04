@@ -1,7 +1,7 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.controller;
 
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.response.ProcobCrednetResponse;
-import br.com.isaquebrb.iftm.batchcreditanalisys.service.ProcobService;
+import br.com.isaquebrb.iftm.batchcreditanalisys.service.ProcobGenerateRandomInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ProcobController {
 
-    private final ProcobService procobService;
+    private final ProcobGenerateRandomInfo procobGenerateRandomInfo;
 
     @GetMapping("/crednet/{document}")
-    public ResponseEntity<ProcobCrednetResponse> getCrednetInfo(@PathVariable("document") Integer document) {
-        return ResponseEntity.ok(procobService.getCrednetInfo(document));
+    public ResponseEntity<ProcobCrednetResponse> getCrednetInfo(@PathVariable("document") String document) {
+        return ResponseEntity.ok(procobGenerateRandomInfo.generateCrednetInfo(document));
     }
 }
