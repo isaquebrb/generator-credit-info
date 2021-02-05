@@ -12,15 +12,15 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomUtils {
 
     public static String randomDocSituation() {
-        int randomNumber = ThreadLocalRandom.current().nextInt(1, 6);
+        int randomNumber = new Random().nextInt(6);
 
         Map<Integer, String> docSituation = new HashMap<>();
-        docSituation.put(1, DocSituation.ACTIVE.getLabel());
-        docSituation.put(2, DocSituation.PENDING.getLabel());
-        docSituation.put(3, DocSituation.SUSPENDED.getLabel());
-        docSituation.put(4, DocSituation.CANCELED.getLabel());
-        docSituation.put(5, DocSituation.DEAD.getLabel());
-        docSituation.put(6, DocSituation.NULL.getLabel());
+        docSituation.put(0, DocSituation.ACTIVE.getLabel());
+        docSituation.put(1, DocSituation.PENDING.getLabel());
+        docSituation.put(2, DocSituation.SUSPENDED.getLabel());
+        docSituation.put(3, DocSituation.CANCELED.getLabel());
+        docSituation.put(4, DocSituation.DEAD.getLabel());
+        docSituation.put(5, DocSituation.NULL.getLabel());
 
         return docSituation.get(randomNumber);
     }

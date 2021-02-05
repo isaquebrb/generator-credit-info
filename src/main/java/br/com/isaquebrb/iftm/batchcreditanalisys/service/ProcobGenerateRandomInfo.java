@@ -4,10 +4,12 @@ import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.*;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.response.ProcobCrednetResponse;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.Random;
 
 import static br.com.isaquebrb.iftm.batchcreditanalisys.utils.DateUtils.randomDate;
 import static br.com.isaquebrb.iftm.batchcreditanalisys.utils.DateUtils.randomRecentDate;
@@ -25,7 +27,7 @@ public class ProcobGenerateRandomInfo {
                 .deathInfo(createDeathInfo(document))
                 .scoreSerasaInfo(createScoreSerasaInfo(document))
                 .presumedIncomeInfo(createPresumedIncomeInfo(document))
-                .monthlyPaymentCapacityInfo(createMontlyPaymentCapacityInfo(document))
+                .monthlyPaymentCapacityInfo(createMonthlyPaymentCapacityInfo(document))
                 .presumedBillingInfo(createPresumedBillingInfo(document))
                 .creditRiskRatingInfo(createCreditRiskRatingInfo(document))
                 .build();
@@ -143,27 +145,61 @@ public class ProcobGenerateRandomInfo {
     }
 
     public ScoreSerasaInfo createScoreSerasaInfo(String document) {
-        //pf
-        return new ScoreSerasaInfo();
+        if (!isCompany(document)) {
+            int score = new Random().nextInt(1000);
+            int percentage = (score * 100) / 1000;
+
+            String message = "A chance do consumidor pagar seus compromissos financeiros nos próximos 12 meses é de " + percentage + "%";
+
+            ScoreSerasaContent content = new ScoreSerasaContent(String.valueOf(score), String.valueOf(percentage), message);
+            return new ScoreSerasaInfo("SIM", content);
+        } else {
+            return null;
+        }
     }
 
     public PresumedIncomeInfo createPresumedIncomeInfo(String document) {
-        //pf
-        return new PresumedIncomeInfo();
+        if (!isCompany(document)) {
+            PresumedIncomeContent content = new PresumedIncomeContent(
+                    randomBigDecimalValue(300d, 15000d).toString());
+
+            return new PresumedIncomeInfo("SIM", content);
+        } else {
+            return null;
+        }
     }
 
-    public MonthlyPaymentCapacityInfo createMontlyPaymentCapacityInfo(String document) {
-        //pf
-        return new MonthlyPaymentCapacityInfo();
+    public MonthlyPaymentCapacityInfo createMonthlyPaymentCapacityInfo(String document) {
+        if (!isCompany(document)) {
+            String paymentCapacity = randomBigDecimalValue(300d, 15000d).toString();
+            MonthlyPaymentCapacityContent content = new MonthlyPaymentCapacityContent(paymentCapacity);
+            return new MonthlyPaymentCapacityInfo("SIM", content);
+        } else {
+            return null;
+        }
     }
 
     public CreditRiskRatingInfo createCreditRiskRatingInfo(String document) {
-        //pj
-        return new CreditRiskRatingInfo();
+        if (isCompany(document)) {
+            int scorePoints = new Random().nextInt(1000);
+            BigDecimal rate = randomBigDecimalValue(1d, 20d);
+            String message = "PROBABILIDADE MEDIA DE INADIMPLENCIA: " + rate + "%";
+
+            CreditRiskRatingContent content = new CreditRiskRatingContent(
+                    String.valueOf(scorePoints), rate.toString(), message);
+            return new CreditRiskRatingInfo("SIM", content);
+        } else {
+            return null;
+        }
     }
 
     public PresumedBillingInfo createPresumedBillingInfo(String document) {
-        //pj
-        return new PresumedBillingInfo();
+        if (isCompany(document)) {
+            BigDecimal presumedBilling = randomBigDecimalValue(10000d, 100000d);
+            PresumedBillingContent content = new PresumedBillingContent("", presumedBilling.toString());
+            return new PresumedBillingInfo("SIM", content);
+        } else {
+            return null;
+        }
     }
 }

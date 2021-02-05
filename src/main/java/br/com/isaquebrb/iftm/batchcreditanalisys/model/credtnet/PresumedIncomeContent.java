@@ -1,10 +1,12 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-public class PersumedIncomeContent {
+@AllArgsConstructor
+public class PresumedIncomeContent {
 
     @JsonProperty("renda")
     private String income;
