@@ -3,6 +3,7 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents.FinancialPendenciesContent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 public class FinancialPendenciesInfo extends CommonInfo {

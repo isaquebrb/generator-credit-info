@@ -3,13 +3,9 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.CreditRiskRatingInfo;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.PresumedBillingInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@SuperBuilder
 public class CrednetInfoPj extends CrednetInfo {
 
     @JsonProperty("faturamento_presumido")

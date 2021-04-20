@@ -1,6 +1,6 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.utils;
 
-import br.com.isaquebrb.iftm.batchcreditanalisys.model.DocSituation;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.enums.DocSituation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -25,20 +25,11 @@ public class RandomUtils {
         return docSituation.get(randomNumber);
     }
 
-    public static boolean randomBoolean(){
-        Random random = new Random();
-        return random.nextBoolean();
-    }
-
     public static Double randomDouble(Double startRange, Double endRange) {
         return ThreadLocalRandom.current().nextDouble(startRange, endRange);
     }
 
     public static BigDecimal randomBigDecimalValue(Double startRange, Double endRange ) {
         return BigDecimal.valueOf(randomDouble(startRange, endRange)).setScale(2, RoundingMode.HALF_DOWN);
-    }
-
-    public static boolean isCompany(String document){
-        return document.length() > 11;
     }
 }

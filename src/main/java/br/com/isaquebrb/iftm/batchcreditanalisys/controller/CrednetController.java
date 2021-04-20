@@ -4,7 +4,7 @@ import br.com.isaquebrb.iftm.batchcreditanalisys.model.request.CnpjRequest;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.request.CpfRequest;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.response.CrednetResponsePf;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.response.CrednetResponsePj;
-import br.com.isaquebrb.iftm.batchcreditanalisys.service.CrednetRandomInfo;
+import br.com.isaquebrb.iftm.batchcreditanalisys.generator.CrednetRandomInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

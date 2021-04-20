@@ -4,11 +4,9 @@ import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents.BacenCo
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 public class BacenInfo extends CommonInfo {
 
     public BacenInfo(String hasInfo, BacenContent content, Integer quantity) {
