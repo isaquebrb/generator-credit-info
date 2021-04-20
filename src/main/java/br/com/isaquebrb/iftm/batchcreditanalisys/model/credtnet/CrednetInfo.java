@@ -1,42 +1,24 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.BacenInfo;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.CrednetPersonInfo;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.FinancialPendenciesInfo;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.StateProtestInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
-@Getter
-@Builder
+@SuperBuilder
 public class CrednetInfo {
 
     @JsonProperty("confirmei")
-    private CrednetPersonInfo personInfo;
+    protected CrednetPersonInfo personInfo;
 
     @JsonProperty("pendencias_financeiras")
-    private FinancialPendenciesInfo financialPendenciesInfo;
+    protected FinancialPendenciesInfo financialPendenciesInfo;
 
     @JsonProperty("bacen")
-    private BacenInfo bacenInfo;
+    protected BacenInfo bacenInfo;
 
     @JsonProperty("protesto_estadual")
-    private StateProtestInfo stateProtestInfo;
-
-    @JsonProperty("obito")
-    private DeathInfo deathInfo;
-
-    @JsonProperty("score_serasa")
-    private ScoreSerasaInfo scoreSerasaInfo;
-
-    @JsonProperty("renda_pro")
-    @JsonAlias("renda_presumida")
-    private PresumedIncomeInfo presumedIncomeInfo;
-
-    @JsonProperty("capacidade_mensal_pagamento")
-    private MonthlyPaymentCapacityInfo monthlyPaymentCapacityInfo;
-
-    @JsonProperty("faturamento_presumido")
-    private PresumedBillingInfo presumedBillingInfo;
-
-    @JsonProperty("classificacao_risco_credito")
-    private CreditRiskRatingInfo creditRiskRatingInfo;
+    protected StateProtestInfo stateProtestInfo;
 }

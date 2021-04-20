@@ -1,39 +1,39 @@
 {
   "code": "000",
   "message": "Consulta de testes com dados fictícios",
-  "date": "2021-01-29",
-  "hour": "00:00:14",
+  "date": "2021-04-19",
+  "hour": "20:43:57",
   "content": {
     "nome": {
       "existe_informacao": "SIM",
       "conteudo": {
-        "documento": "99999999999",
-        "tipo_documento": "PF",
-        "nome": "JOÃO DA SILVA",
+        "documento": "99999999999999",
+        "tipo_documento": "PJ",
+        "nome": "PADARIA FAMILIA",
+        "nome_fantasia": "PADARIA FAMILIA DOCES E SALGADOS",
         "outras_grafias": [
-          "JOÃO D SILVA",
-          "JOÃO SILVA"
+          "PADARIA FAMILIA DOCES E SALGADOS",
+          "PADARIA SALGADOS S/A"
         ],
         "data_nascimento": "15/06/1979",
         "outras_datas_nascimento": [
           "25/06/1979"
         ],
-        "idade": "26",
-        "signo": "Gêmeos",
+        "idade": "13",
         "obito": "NAO",
-        "sexo": "M",
-        "uf": "RS,CE,",
-        "situacao_receita": "REGULAR",
-        "situacao_receita_data": "2016-10-17",
-        "situacao_receita_hora": "11:02:49",
-        "estrangeiro": {
-          "existe_informacao": "SIM",
-          "estrangeiro": "NAO",
-          "pais_origem": {
-            "codigo": "10",
-            "origem": "Brasileiro"
+        "uf": "PR,",
+        "situacao_receita": "ATIVA",
+        "situacao_receita_data": "2017-03-01",
+        "situacao_receita_hora": "16:56:07",
+        "natureza_juridica": "2062 - SOCIEDADE EMPRESARIA LIMITADA",
+        "cnae_primaria": "9999999",
+        "descricao_cnae_primaria": "VENDA DE DOCES",
+        "cnaes_secundarias": [
+          {
+            "cnae": "9999998",
+            "descricao": "VENDA DE DOCES"
           }
-        }
+        ]
       }
     },
     "contato_preferencial": {
@@ -130,28 +130,6 @@
     },
     "outros_documentos": {
       "existe_informacao": "NAO"
-    },
-    "numero_beneficio": {
-      "existe_informacao": "SIM",
-      "conteudo": {
-        "numero": "999999999",
-        "ano_aposentadoria": "7",
-        "tipo_aposentadoria": "Aposentadoria Por Tempo De Contribuição",
-        "aposentado": "SIM",
-        "inss": "SIM",
-        "acidente_trabalho": "SIM",
-        "afastado_doenca": "SIM",
-        "emprestimo": "SIM",
-        "banco_nome": "Itaú Unibanco S.A.",
-        "banco_agencia": "DUQUE DE CAXIAS/JARDIM PRIMAVERA",
-        "banco_endereco": "ROD. WASHINGTON LUIZ, S/Nº",
-        "banco_numero": "0",
-        "banco_complemento": "QUADRA 3 - LOTE 5",
-        "banco_bairro": "PARQUE SANTA LÚCIA",
-        "banco_c_e_p": "99999999",
-        "banco_cidade": "DUQUE DE CAXIAS",
-        "banco_estado": "RJ"
-      }
     }
   }
 }
