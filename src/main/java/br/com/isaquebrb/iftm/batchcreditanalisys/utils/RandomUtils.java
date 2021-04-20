@@ -1,6 +1,8 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.utils;
 
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.enums.Agency;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.enums.DocSituation;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.enums.Occupation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -25,11 +27,35 @@ public class RandomUtils {
         return docSituation.get(randomNumber);
     }
 
+    public static String randomOccupation() {
+        int randomNumber = new Random().nextInt(4);
+
+        Map<Integer, String> occupationMap = new HashMap<>();
+        occupationMap.put(0, Occupation.PRESIDENT.getLabel());
+        occupationMap.put(1, Occupation.GOVERNOR.getLabel());
+        occupationMap.put(2, Occupation.MAYOR.getLabel());
+        occupationMap.put(3, Occupation.CONGRESSMAN.getLabel());
+
+        return occupationMap.get(randomNumber);
+    }
+
+    public static String randomAgency() {
+        int randomNumber = new Random().nextInt(4);
+
+        Map<Integer, String> occupationMap = new HashMap<>();
+        occupationMap.put(0, Agency.FEDERATIVE_BRAZIL.getLabel());
+        occupationMap.put(1, Agency.MINAS_GERAIS_STATE.getLabel());
+        occupationMap.put(2, Agency.UBERLANDIA_CITY.getLabel());
+        occupationMap.put(3, Agency.LEGISLATIVE_SP_ASSEMBLY.getLabel());
+
+        return occupationMap.get(randomNumber);
+    }
+
     public static Double randomDouble(Double startRange, Double endRange) {
         return ThreadLocalRandom.current().nextDouble(startRange, endRange);
     }
 
-    public static BigDecimal randomBigDecimalValue(Double startRange, Double endRange ) {
+    public static BigDecimal randomBigDecimalValue(Double startRange, Double endRange) {
         return BigDecimal.valueOf(randomDouble(startRange, endRange)).setScale(2, RoundingMode.HALF_DOWN);
     }
 }

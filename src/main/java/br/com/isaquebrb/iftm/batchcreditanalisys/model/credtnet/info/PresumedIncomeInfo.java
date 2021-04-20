@@ -1,5 +1,6 @@
 package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info;
 
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.CommonInfo;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents.PresumedIncomeContent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class PresumedIncomeInfo extends CommonInfo{
+public class PresumedIncomeInfo extends CommonInfo {
 
     public PresumedIncomeInfo(String hasInfo, PresumedIncomeContent content){
         super(hasInfo);
