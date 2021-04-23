@@ -2,7 +2,7 @@ package br.com.isaquebrb.iftm.batchcreditanalisys.generator;
 
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.CrednetInfoPf;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.CrednetInfoPj;
-import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents.*;
+import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.content.*;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.info.*;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.enums.CreditRecoveryRange;
 import br.com.isaquebrb.iftm.batchcreditanalisys.model.response.CrednetResponsePf;

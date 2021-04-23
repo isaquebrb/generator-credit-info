@@ -1,17 +1,13 @@
-package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents;
+package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.content;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-public class PresumedBillingContent {
+public class DeathContent {
 
     @JsonProperty("mensagem")
     private String message;
-
-    @JsonProperty("valor")
-    private String value;
 }

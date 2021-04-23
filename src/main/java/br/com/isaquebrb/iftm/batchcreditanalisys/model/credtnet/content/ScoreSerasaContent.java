@@ -1,4 +1,4 @@
-package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.contents;
+package br.com.isaquebrb.iftm.batchcreditanalisys.model.credtnet.content;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
