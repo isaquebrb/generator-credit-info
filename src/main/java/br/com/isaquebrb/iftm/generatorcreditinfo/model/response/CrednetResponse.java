@@ -1,16 +1,16 @@
 package br.com.isaquebrb.iftm.generatorcreditinfo.model.response;
 
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.CrednetInfoPf;
+import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.CrednetInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CrednetResponsePf {
+public class CrednetResponse {
 
     @JsonProperty("content")
-    private CrednetInfoPf crednetInfoPf;
+    private CrednetInfo crednetInfo;
 
     private String date;
 

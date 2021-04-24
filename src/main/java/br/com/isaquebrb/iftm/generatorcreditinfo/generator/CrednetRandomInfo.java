@@ -5,8 +5,7 @@ import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.CrednetInfoPj;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.content.*;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.info.*;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.CreditRecoveryRange;
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.CrednetResponsePf;
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.CrednetResponsePj;
+import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.CrednetResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +25,7 @@ import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils.
 @Component
 public class CrednetRandomInfo {
 
-    public CrednetResponsePf generateCrednetInfoPf(String document) {
+    public CrednetResponse generateCrednetInfoPf(String document) {
         log.info("[CrednetRandomInfo.generateCrednetInfoPf] Generating Crednet Info to the CPF " + document);
         CrednetInfoPf crednetInfoPf = CrednetInfoPf.builder()
                 .personInfo(createPersonInfo(true))
@@ -40,10 +39,10 @@ public class CrednetRandomInfo {
                 .creditRecovery(createCreditRecoveryInfo())
                 .build();
 
-        return new CrednetResponsePf(crednetInfoPf, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+        return new CrednetResponse(crednetInfoPf, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
     }
 
-    public CrednetResponsePj generateCrednetInfoPj(String document) {
+    public CrednetResponse generateCrednetInfoPj(String document) {
         log.info("[CrednetRandomInfo.generateCrednetInfoPj] Generating Crednet Info to the CNPJ " + document);
         CrednetInfoPj crednetInfoPj = CrednetInfoPj.builder()
                 .financialPendenciesInfo(createFinancialPendencies())
@@ -53,7 +52,7 @@ public class CrednetRandomInfo {
                 .presumedBillingInfo(createPresumedBillingInfo())
                 .creditRiskRatingInfo(createCreditRiskRatingInfo()).build();
 
-        return new CrednetResponsePj(crednetInfoPj,
+        return new CrednetResponse(crednetInfoPj,
                 LocalDate.now().toString(),
                 LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
     }

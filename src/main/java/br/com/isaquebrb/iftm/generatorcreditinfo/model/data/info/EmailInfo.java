@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 public class EmailInfo extends CommonInfo {
 
-    private EmailInfo(String hasInfo, EmailContent content){
+    public EmailInfo(String hasInfo, EmailContent content){
         super(hasInfo);
         this.content = content;
     }

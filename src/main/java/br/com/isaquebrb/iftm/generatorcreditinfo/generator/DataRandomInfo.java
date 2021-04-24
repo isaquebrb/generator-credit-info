@@ -6,6 +6,7 @@ import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.info.AddressSearchIn
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.info.EmailInfo;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.info.NameInfo;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.info.PhoneSearchInfo;
+import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Address;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Company;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Nationality;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.DataResponse;
@@ -15,11 +16,13 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.Collections;
 import java.util.Random;
 
 import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DataRandomUtils.*;
 import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DateRandomUtils.randomDate;
 import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DateRandomUtils.timeToString;
+import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils.randomInteger;
 
 @Slf4j
 @Component
@@ -79,20 +82,46 @@ public class DataRandomInfo {
     }
 
     private AddressSearchInfo createAddress() {
-        return null;
+        Address randomAddress = randomAddress();
+
+        AddressSearchContent content = AddressSearchContent.builder()
+                .stateUf(randomAddress.getUf())
+                .cep(randomAddress.getCep())
+                .address(randomAddress.getAddress())
+                .city(randomAddress.name())
+                .district(randomAddress.getDistrict())
+                .number(String.valueOf(new Random().nextInt(2000)))
+                .complement("")
+                .build();
+
+        return new AddressSearchInfo("SIM", Collections.singletonList(content));
     }
 
     private PhoneSearchInfo createPhone() {
-        return null;
+        String areaCode = randomInteger(11, 100).toString();
+        String operator = randomPhoneOperator();
+
+        String cellNumber = randomInteger(3000, 5001).toString() + randomInteger(3000, 5001).toString();
+        Phone cellphone = new Phone(areaCode, cellNumber, operator);
+
+        String lineNumber = randomInteger(9000, 9999).toString() + randomInteger(9000, 9999).toString();
+        Phone landLine = new Phone(areaCode, lineNumber, operator);
+
+        PhoneSearchContent content = new PhoneSearchContent(Collections.singletonList(cellphone),
+                Collections.singletonList(landLine));
+
+        return new PhoneSearchInfo("SIM", content);
     }
 
     private EmailInfo createEmail() {
-        return null;
+        String emailPrefix = (randomNamePf().charAt(0) + randomLastName()).toLowerCase();
+        Email randomEmail = new Email(emailPrefix + "@email.com");
+        return new EmailInfo("SIM", new EmailContent(Collections.singletonList(randomEmail)));
     }
 
     private Foreign createForeign() {
         if (new Random().nextBoolean()) {
-            return new Foreign("SIM","NAO",
+            return new Foreign("SIM", "NAO",
                     new OriginCountry(Nationality.BRAZILIAN.getCode().toString(), Nationality.BRAZILIAN.getLabel()));
         }
 

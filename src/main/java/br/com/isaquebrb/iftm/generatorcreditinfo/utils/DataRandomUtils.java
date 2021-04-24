@@ -1,9 +1,7 @@
 package br.com.isaquebrb.iftm.generatorcreditinfo.utils;
 
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Company;
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.LastName;
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Name;
-import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.Nationality;
+import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.content.PhoneOperator;
+import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,5 +71,32 @@ public class DataRandomUtils {
         companiesMap.put(4, Company.COMPANY_5);
 
         return companiesMap.get(randomNumber);
+    }
+
+    public static Address randomAddress(){
+        Integer randomNumber = new Random().nextInt(7);
+
+        Map<Integer, Address> addressMap = new HashMap<>();
+        addressMap.put(0, Address.UBERLANDIA);
+        addressMap.put(1, Address.SAO_PAULO);
+        addressMap.put(2, Address.SALVADOR);
+        addressMap.put(3, Address.CURITIBA);
+        addressMap.put(4, Address.BRASILIA);
+        addressMap.put(5, Address.PORTO_ALEGRE);
+        addressMap.put(6, Address.RIO_BRANCO);
+
+        return addressMap.get(randomNumber);
+    }
+
+    public static String randomPhoneOperator(){
+        Integer randomNumber = new Random().nextInt(4);
+
+        Map<Integer, String> operatorMap = new HashMap<>();
+        operatorMap.put(0, PhoneOperator.OI.name());
+        operatorMap.put(1, PhoneOperator.TIM.name());
+        operatorMap.put(2, PhoneOperator.VIVO.name());
+        operatorMap.put(3, PhoneOperator.CLARO.name());
+
+        return operatorMap.get(randomNumber);
     }
 }

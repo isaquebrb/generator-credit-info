@@ -10,7 +10,7 @@ import lombok.Getter;
 public class DataResponse {
 
     @JsonProperty("content")
-    private DataInfo crednetInfoPf;
+    private DataInfo dataInfo;
 
     private String date;
 
