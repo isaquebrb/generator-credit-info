@@ -20,7 +20,7 @@ public class PepController {
     private final PepRandomInfo pepRandomInfo;
 
     @GetMapping
-    public ResponseEntity<PepResponse> getPepInfo(@RequestBody @Valid CpfRequest request){
+    public ResponseEntity<PepResponse> generatePepInfo(@RequestBody @Valid CpfRequest request){
         return ResponseEntity.ok(pepRandomInfo.generatePepInfo(request.getDocument()));
     }
 }

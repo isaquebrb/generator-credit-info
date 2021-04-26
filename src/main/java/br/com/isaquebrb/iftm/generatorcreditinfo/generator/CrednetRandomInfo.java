@@ -1,5 +1,6 @@
 package br.com.isaquebrb.iftm.generatorcreditinfo.generator;
 
+import br.com.isaquebrb.iftm.generatorcreditinfo.exception.SystemException;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.CrednetInfoPf;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.CrednetInfoPj;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.content.*;
@@ -17,8 +18,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.CredtnetRandomUtils.randomDocSituation;
-import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DataRandomUtils.*;
-import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DateRandomUtils.*;
+import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DataRandomUtils.randomCompany;
+import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DataRandomUtils.randomNamePf;
+import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DateRandomUtils.randomDate;
+import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.DateRandomUtils.timeToString;
 import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils.randomBigDecimalValue;
 
 @Slf4j
@@ -26,35 +29,47 @@ import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils.
 public class CrednetRandomInfo {
 
     public CrednetResponse generateCrednetInfoPf(String document) {
-        log.info("[CrednetRandomInfo.generateCrednetInfoPf] Generating Crednet Info to the CPF " + document);
-        CrednetInfoPf crednetInfoPf = CrednetInfoPf.builder()
-                .personInfo(createPersonInfo(true))
-                .financialPendenciesInfo(createFinancialPendencies())
-                .bacenInfo(createBacenInfo())
-                .stateProtestInfo(createStateProtestInfo())
-                .deathInfo(createDeathInfo())
-                .scoreSerasaInfo(createScoreSerasaInfo())
-                .presumedIncomeInfo(createPresumedIncomeInfo())
-                .monthlyPaymentCapacityInfo(createMonthlyPaymentCapacityInfo())
-                .creditRecovery(createCreditRecoveryInfo())
-                .build();
+        try {
+            log.info("[CrednetRandomInfo.generateCrednetInfoPf] Generating Crednet Info to the CPF " + document);
 
-        return new CrednetResponse(crednetInfoPf, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+            CrednetInfoPf crednetInfoPf = CrednetInfoPf.builder()
+                    .personInfo(createPersonInfo(true))
+                    .financialPendenciesInfo(createFinancialPendencies())
+                    .bacenInfo(createBacenInfo())
+                    .stateProtestInfo(createStateProtestInfo())
+                    .deathInfo(createDeathInfo())
+                    .scoreSerasaInfo(createScoreSerasaInfo())
+                    .presumedIncomeInfo(createPresumedIncomeInfo())
+                    .monthlyPaymentCapacityInfo(createMonthlyPaymentCapacityInfo())
+                    .creditRecovery(createCreditRecoveryInfo())
+                    .build();
+
+            return new CrednetResponse(crednetInfoPf, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+        } catch (Exception e) {
+            log.error("[CrednetRandomInfo.generateCrednetInfoPf] Error trying to generate Crednet Info", e);
+            throw new SystemException(e.getMessage());
+        }
     }
 
     public CrednetResponse generateCrednetInfoPj(String document) {
-        log.info("[CrednetRandomInfo.generateCrednetInfoPj] Generating Crednet Info to the CNPJ " + document);
-        CrednetInfoPj crednetInfoPj = CrednetInfoPj.builder()
-                .financialPendenciesInfo(createFinancialPendencies())
-                .personInfo(createPersonInfo(false))
-                .bacenInfo(createBacenInfo())
-                .stateProtestInfo(createStateProtestInfo())
-                .presumedBillingInfo(createPresumedBillingInfo())
-                .creditRiskRatingInfo(createCreditRiskRatingInfo()).build();
+        try {
+            log.info("[CrednetRandomInfo.generateCrednetInfoPj] Generating Crednet Info to the CNPJ " + document);
 
-        return new CrednetResponse(crednetInfoPj,
-                LocalDate.now().toString(),
-                LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            CrednetInfoPj crednetInfoPj = CrednetInfoPj.builder()
+                    .financialPendenciesInfo(createFinancialPendencies())
+                    .personInfo(createPersonInfo(false))
+                    .bacenInfo(createBacenInfo())
+                    .stateProtestInfo(createStateProtestInfo())
+                    .presumedBillingInfo(createPresumedBillingInfo())
+                    .creditRiskRatingInfo(createCreditRiskRatingInfo()).build();
+
+            return new CrednetResponse(crednetInfoPj,
+                    LocalDate.now().toString(),
+                    LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        } catch (Exception e) {
+            log.error("[CrednetRandomInfo.generateCrednetInfoPj] Error trying to generate Crednet Info", e);
+            throw new SystemException(e.getMessage());
+        }
     }
 
     private CrednetPersonInfo createPersonInfo(boolean isNaturalPerson) {

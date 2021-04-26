@@ -1,5 +1,6 @@
 package br.com.isaquebrb.iftm.generatorcreditinfo.generator;
 
+import br.com.isaquebrb.iftm.generatorcreditinfo.exception.SystemException;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.DataInfo;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.content.*;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.data.info.AddressSearchInfo;
@@ -27,26 +28,37 @@ import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils.
 @Slf4j
 @Component
 public class DataRandomInfo {
-    public DataResponse generateDataInfoPf(String document) {
-        log.info("[DataRandomInfo.generateDataInfoPf] Generating Data Info to the CPF " + document);
-        DataInfo dataInfo = DataInfo.builder()
-                .name(createNamePf(document))
-                .addressSearch(createAddress())
-                .phonesSearch(createPhone())
-                .emails(createEmail()).build();
 
-        return new DataResponse(dataInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+    public DataResponse generateDataInfoPf(String document) {
+        try {
+            log.info("[DataRandomInfo.generateDataInfoPf] Generating Data Info to the CPF " + document);
+            DataInfo dataInfo = DataInfo.builder()
+                    .name(createNamePf(document))
+                    .addressSearch(createAddress())
+                    .phonesSearch(createPhone())
+                    .emails(createEmail()).build();
+
+            return new DataResponse(dataInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+        } catch (Exception e) {
+            log.error("[DataRandomInfo.generateDataInfoPf] Generating Data info", e);
+            throw new SystemException(e.getMessage());
+        }
     }
 
     public DataResponse generateDataInfoPj(String document) {
-        log.info("[DataRandomInfo.generateDataInfoPj] Generating Data Info to the CNPJ " + document);
-        DataInfo dataInfo = DataInfo.builder()
-                .name(createNamePj(document))
-                .addressSearch(createAddress())
-                .phonesSearch(createPhone())
-                .emails(createEmail()).build();
+        try {
+            log.info("[DataRandomInfo.generateDataInfoPj] Generating Data Info to the CNPJ " + document);
+            DataInfo dataInfo = DataInfo.builder()
+                    .name(createNamePj(document))
+                    .addressSearch(createAddress())
+                    .phonesSearch(createPhone())
+                    .emails(createEmail()).build();
 
-        return new DataResponse(dataInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+            return new DataResponse(dataInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+        } catch (Exception e) {
+            log.error("[DataRandomInfo.generateDataInfoPj] Generating Data info", e);
+            throw new SystemException(e.getMessage());
+        }
     }
 
     private NameInfo createNamePf(String document) {

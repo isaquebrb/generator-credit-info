@@ -1,5 +1,6 @@
 package br.com.isaquebrb.iftm.generatorcreditinfo.generator;
 
+import br.com.isaquebrb.iftm.generatorcreditinfo.exception.SystemException;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.pep.PepData;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.pep.PepInfo;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.PepResponse;
@@ -23,25 +24,31 @@ import static br.com.isaquebrb.iftm.generatorcreditinfo.utils.PepRandomUtils.ran
 public class PepRandomInfo {
 
     public PepResponse generatePepInfo(String document) {
-        log.info("[PepRandomInfo.generatePepInfo] Generating Pep Info to the CPF " + document);
+        try {
+            log.info("[PepRandomInfo.generatePepInfo] Generating Pep Info to the CPF " + document);
 
-        if (!new Random().nextBoolean()) {
-            PepInfo pepInfo = new PepInfo("NAO", document, Collections.emptyList());
-            return new PepResponse(pepInfo, LocalDate.now().toString(), LocalTime.now()
-                    .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+            if (!new Random().nextBoolean()) {
+                PepInfo pepInfo = new PepInfo("NAO", document, Collections.emptyList());
+                return new PepResponse(pepInfo, LocalDate.now().toString(), LocalTime.now()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            }
+
+            LocalDate dateReference = randomDate(2020, 2021);
+
+            PepData pepContent = PepData.builder()
+                    .occupation(randomOccupation())
+                    .agency(randomAgency())
+                    .exerciseStartDate(dateReference.toString())
+                    .exerciseEndDate(dateReference.plusYears(4).toString())
+                    .shortageEndDate(dateReference.plusYears(8).toString()).build();
+
+            PepInfo pepInfo = new PepInfo("SIM", document, Collections.singletonList(pepContent));
+
+            return new PepResponse(pepInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
+        } catch (Exception e) {
+            log.error("[PepRandomInfo.generatePepInfo] Generating Pep Info", e);
+            throw new SystemException(e.getMessage());
         }
-
-        LocalDate dateReference = randomDate(2020, 2021);
-
-        PepData pepContent = PepData.builder()
-                .occupation(randomOccupation())
-                .agency(randomAgency())
-                .exerciseStartDate(dateReference.toString())
-                .exerciseEndDate(dateReference.plusYears(4).toString())
-                .shortageEndDate(dateReference.plusYears(8).toString()).build();
-
-        PepInfo pepInfo = new PepInfo("SIM", document, Collections.singletonList(pepContent));
-
-        return new PepResponse(pepInfo, LocalDate.now().toString(), timeToString(LocalDateTime.now()));
     }
 }
