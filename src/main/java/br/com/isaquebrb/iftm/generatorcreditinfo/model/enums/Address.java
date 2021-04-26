@@ -13,15 +13,15 @@ public enum Address {
     CURITIBA("PR","82590300","RUA CEL JOAQUIM LACERDA", "JARDIM DAS AMÉRICAS"),
     RIO_BRANCO("AC","69900634","RUA MILTON MATOS", "BOSQUE");
 
-    Address(String uf, String cep, String address, String district){
+    Address(String uf, String cep, String street, String district){
         this.uf = uf;
         this.cep = cep;
-        this.address = address;
+        this.street = street;
         this.district = district;
     }
 
     private String uf;
     private String cep;
-    private String address;
+    private String street;
     private String district;
 }

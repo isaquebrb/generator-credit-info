@@ -7,14 +7,14 @@ import lombok.Getter;
 @Getter
 public class Foreign extends CommonInfo {
 
-    public Foreign(String hasInfo, String foreign, OriginCountry country) {
+    public Foreign(String hasInfo, String isForeign, OriginCountry country) {
         super(hasInfo);
-        this.foreign = foreign;
+        this.isForeign = isForeign;
         this.originCountry = country;
     }
 
     @JsonProperty("estrangeiro")
-    private String foreign;
+    private String isForeign;
 
     @JsonProperty("pais_origem")
     private OriginCountry originCountry;

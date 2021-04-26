@@ -7,5 +7,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class Email {
 
-    private String email;
+    private String emailAddress;
 }

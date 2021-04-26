@@ -99,7 +99,7 @@ public class DataRandomInfo {
         AddressSearchContent content = AddressSearchContent.builder()
                 .stateUf(randomAddress.getUf())
                 .cep(randomAddress.getCep())
-                .address(randomAddress.getAddress())
+                .address(randomAddress.getStreet())
                 .city(randomAddress.name())
                 .district(randomAddress.getDistrict())
                 .number(String.valueOf(new Random().nextInt(2000)))
