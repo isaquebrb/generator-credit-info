@@ -21,12 +21,12 @@ public class CrednetController {
     private final CrednetRandomInfo crednetRandomInfo;
 
     @GetMapping("/pf")
-    public ResponseEntity<CrednetResponse> getCrednetInfoPf(@RequestBody @Valid CpfRequest cpfRequest) {
+    public ResponseEntity<CrednetResponse> generateCrednetInfoPf(@RequestBody @Valid CpfRequest cpfRequest) {
         return ResponseEntity.ok(crednetRandomInfo.generateCrednetInfoPf(cpfRequest.getDocument()));
     }
 
     @GetMapping("/pj")
-    public ResponseEntity<CrednetResponse> getCrednetInfoPj(@RequestBody @Valid CnpjRequest cnpjRequest) {
+    public ResponseEntity<CrednetResponse> generateCrednetInfoPj(@RequestBody @Valid CnpjRequest cnpjRequest) {
         return ResponseEntity.ok(crednetRandomInfo.generateCrednetInfoPj(cnpjRequest.getDocument()));
     }
 }
