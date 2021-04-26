@@ -23,7 +23,7 @@ public class DataRandomUtils {
         namesMap.put(3, Name.FRANCISCO.name());
         namesMap.put(4, Name.CARLOS.name());
 
-        return namesMap.get(randomNumber) + " " + randomLastName();
+        return "FULANO " + namesMap.get(randomNumber) + " " + randomLastName();
     }
 
     public static String randomLastName() {
@@ -60,7 +60,7 @@ public class DataRandomUtils {
         return nationalityMap.get(randomNumber);
     }
 
-    public static Company randomCompany(){
+    public static Company randomCompany() {
         Integer randomNumber = new Random().nextInt(5);
 
         Map<Integer, Company> companiesMap = new HashMap<>();
@@ -73,7 +73,7 @@ public class DataRandomUtils {
         return companiesMap.get(randomNumber);
     }
 
-    public static Address randomAddress(){
+    public static Address randomAddress() {
         Integer randomNumber = new Random().nextInt(7);
 
         Map<Integer, Address> addressMap = new HashMap<>();
@@ -88,7 +88,7 @@ public class DataRandomUtils {
         return addressMap.get(randomNumber);
     }
 
-    public static String randomPhoneOperator(){
+    public static String randomPhoneOperator() {
         Integer randomNumber = new Random().nextInt(4);
 
         Map<Integer, String> operatorMap = new HashMap<>();
