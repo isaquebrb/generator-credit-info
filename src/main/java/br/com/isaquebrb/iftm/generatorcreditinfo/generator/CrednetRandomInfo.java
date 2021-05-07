@@ -91,7 +91,7 @@ public class CrednetRandomInfo {
         Integer randomNumber = new Random().nextInt(3);
         for (int i = 0; i <= randomNumber; i++) {
             String date = randomDate(2020, 2021).toString();
-            String value = randomBigDecimalValue(0d, 5000d).toString();
+            String value = randomBigDecimalValue(0d, 800d).toString();
 
             Pendencies pendencies = Pendencies.builder()
                     .contract("00000000" + i)
@@ -136,7 +136,7 @@ public class CrednetRandomInfo {
 
             BacenChecks bacenCheck = BacenChecks.builder()
                     .date(randomDate(2018, 2021).toString())
-                    .value(randomBigDecimalValue(0d, 5000d).toString())
+                    .value(randomBigDecimalValue(0d, 800d).toString())
                     .checkNumber("00000" + i)
                     .bankNumber("00" + i)
                     .bankName("RANDOM BANK")
