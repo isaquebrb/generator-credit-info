@@ -14,7 +14,7 @@ public class DateRandomUtils {
 
     public static LocalDate randomDate(Integer startYearRange, Integer endYearRange) {
         Integer randomYear = randomInteger(startYearRange, endYearRange);
-        Integer randomDay = randomInteger(1, 30);
+        Integer randomDay = randomInteger(1, 28);
         Integer randomMonth = randomInteger(1, 12);
 
         return LocalDate.of(randomYear, randomMonth, randomDay);
