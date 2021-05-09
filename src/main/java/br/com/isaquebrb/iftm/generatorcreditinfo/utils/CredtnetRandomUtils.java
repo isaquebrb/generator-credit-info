@@ -14,7 +14,11 @@ public class CredtnetRandomUtils {
 
 
     public static String randomDocSituation() {
-        Integer randomNumber = new Random().nextInt(6);
+        Integer randomNumber = new Random().nextInt(150);
+
+        //setting more chances to active
+        if(randomNumber > 5)
+            randomNumber = 0;
 
         Map<Integer, String> docSituation = new HashMap<>();
         docSituation.put(0, DocSituation.ACTIVE.getLabel());

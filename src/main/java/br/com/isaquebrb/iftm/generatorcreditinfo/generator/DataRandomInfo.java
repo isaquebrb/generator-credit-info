@@ -62,7 +62,7 @@ public class DataRandomInfo {
     }
 
     private NameInfo createNamePf(String document) {
-        LocalDate birthDate = randomDate(1970, 2006);
+        LocalDate birthDate = randomDate(1960, 2004);
 
         NameContent content = NameContentPf.builder()
                 .document(document)
@@ -126,7 +126,7 @@ public class DataRandomInfo {
     }
 
     private EmailInfo createEmail() {
-        String emailPrefix = (randomNamePf().charAt(0) + randomLastName()).toLowerCase();
+        String emailPrefix = (randomNamePf().charAt(8) + randomLastName()).toLowerCase();
         Email randomEmail = new Email(emailPrefix + "@email.com");
         return new EmailInfo("SIM", new EmailContent(Collections.singletonList(randomEmail)));
     }

@@ -7,6 +7,7 @@ import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.content.*;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.credtnet.info.*;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.enums.CreditRecoveryRange;
 import br.com.isaquebrb.iftm.generatorcreditinfo.model.response.CrednetResponse;
+import br.com.isaquebrb.iftm.generatorcreditinfo.utils.NumberRandomUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -75,14 +76,14 @@ public class CrednetRandomInfo {
     private CrednetPersonInfo createPersonInfo(boolean isNaturalPerson) {
         CrednetPersonContent content = CrednetPersonContent.builder()
                 .name(isNaturalPerson ? randomNamePf() : randomCompany().getLabel())
-                .birthDate(randomDate(1960, 2006).toString())
+                .birthDate(randomDate(1960, 2004).toString())
                 .docSituation(randomDocSituation())
                 .docSituationDate(randomDate(2020, 2021).toString()).build();
         return new CrednetPersonInfo("SIM", content);
     }
 
     private FinancialPendenciesInfo createFinancialPendencies() {
-        if (!new Random().nextBoolean()) {
+        if (new Random().nextInt(100) > 1) {
             return new FinancialPendenciesInfo("SIM", new FinancialPendenciesContent(), 0);
         }
 
@@ -91,7 +92,7 @@ public class CrednetRandomInfo {
         Integer randomNumber = new Random().nextInt(3);
         for (int i = 0; i <= randomNumber; i++) {
             String date = randomDate(2020, 2021).toString();
-            String value = randomBigDecimalValue(0d, 800d).toString();
+            String value = randomBigDecimalValue(0d, 300d).toString();
 
             Pendencies pendencies = Pendencies.builder()
                     .contract("00000000" + i)
@@ -125,7 +126,7 @@ public class CrednetRandomInfo {
 
 
     private BacenInfo createBacenInfo() {
-        if (!new Random().nextBoolean()) {
+        if (new Random().nextInt(100) > 1) {
             return new BacenInfo("SIM", new BacenContent(), 0);
         }
 
@@ -136,7 +137,7 @@ public class CrednetRandomInfo {
 
             BacenChecks bacenCheck = BacenChecks.builder()
                     .date(randomDate(2018, 2021).toString())
-                    .value(randomBigDecimalValue(0d, 800d).toString())
+                    .value(randomBigDecimalValue(0d, 300d).toString())
                     .checkNumber("00000" + i)
                     .bankNumber("00" + i)
                     .bankName("RANDOM BANK")
@@ -157,7 +158,7 @@ public class CrednetRandomInfo {
     }
 
     private StateProtestInfo createStateProtestInfo() {
-        if (!new Random().nextBoolean()) {
+        if (new Random().nextInt(100) > 1) {
             return new StateProtestInfo("SIM", new StateProtestContent(), 0);
         }
 
@@ -165,7 +166,7 @@ public class CrednetRandomInfo {
 
         Integer randomNumber = new Random().nextInt(3);
         for (int i = 0; i <= randomNumber; i++) {
-            String value = randomBigDecimalValue(0d, 5000d).toString();
+            String value = randomBigDecimalValue(0d, 300d).toString();
 
             Protest protest = Protest.builder()
                     .date(randomDate(2018, 2021).toString())
@@ -198,16 +199,16 @@ public class CrednetRandomInfo {
     private DeathInfo createDeathInfo() {
         DeathContent content;
 
-        if (new Random().nextInt(6) > 4) {
-            content = new DeathContent("OBITO");
-        } else {
+        if (new Random().nextInt(150) > 1) {
             content = new DeathContent("NADA CONSTA");
+        } else {
+            content = new DeathContent("OBITO");
         }
         return new DeathInfo("SIM", content);
     }
 
     private ScoreSerasaInfo createScoreSerasaInfo() {
-        Integer score = new Random().nextInt(1001);
+        Integer score = NumberRandomUtils.randomInteger(400, 1000);
         Integer percentage = (score * 100) / 1000;
 
         String message = "A chance do consumidor pagar seus compromissos financeiros nos próximos 12 meses é de " + percentage + "%";

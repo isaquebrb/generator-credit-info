@@ -27,7 +27,7 @@ public class PepRandomInfo {
         try {
             log.info("[PepRandomInfo.generatePepInfo] Generating Pep Info to the CPF " + document);
 
-            if (!new Random().nextBoolean()) {
+            if (new Random().nextInt(100) > 1) {
                 PepInfo pepInfo = new PepInfo("NAO", document, Collections.emptyList());
                 return new PepResponse(pepInfo, LocalDate.now().toString(), LocalTime.now()
                         .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
