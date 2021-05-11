@@ -1,5 +1,6 @@
 # generator-credit-info
 Project to generate random and fake credit information for natural person (PF) and legal person (PJ).
+It generates information based on [procob](https://www.procob.com/) products like crednet, personal data and pep.
 
 ## Solution
 ```https://generator-credit-info.herokuapp.com/ ```
